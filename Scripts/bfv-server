@@ -1,0 +1,37 @@
+#!/bin/sh
+# Start the Battlefield Vietnam dedicated server (START_EXE).
+#
+# Runs `bfv_linded +restart 1 +dedicated 1 +game <BFV_MOD> +config <BFV_CONFIG>
+# +statusMonitor <0|1>` from the server root. Any START_ARGS are appended.
+set -e
+
+root="${SERVER_ROOT:-/config/Merged}"
+
+cd "$root"
+
+# The community security patch is applied to the dynamic binary
+exe=./bfv_linded.dynamic
+[ -f "$exe" ] || exe=./bfv_linded.static
+
+if [ ! -f "$exe" ]; then
+    echo "bfv_linded.dynamic not found in $root" >&2
+    exit 1
+fi
+
+# The text status monitor spins a CPU core when stdout isn't a terminal
+monitor=0
+case "${BFV_STATUS_MONITOR:-false}" in
+    true|1|yes)
+        monitor=1
+        [ -t 1 ] || echo "BFV_STATUS_MONITOR is on but there is no terminal; set tty: true in compose" >&2
+        ;;
+esac
+
+# +config is relative to mods/<mod>/settings/; the map rotation is always settings/maplist.con
+set -- +restart 1 +dedicated 1 +game "${BFV_MOD:-bfvietnam}" \
+    +config "${BFV_CONFIG:-serversettings.con}" +statusMonitor "$monitor" "$@"
+
+echo "Starting: $exe $*"
+[ "$monitor" -eq 1 ] || echo "Status monitor is off; the server log is mods/${BFV_MOD:-bfvietnam}/logs/bflog_<hostname>.log"
+
+exec "$exe" "$@"
