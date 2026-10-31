@@ -72,7 +72,7 @@ The settings are written into `mods/<BFV_MOD>/settings/<BFV_CONFIG>` on every st
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `BFV_SERVER_NAME` | `game.serverName` | `Battlefield Vietnam Server` |
+| `BFV_SERVER_NAME` | `game.serverName` (at most 30 characters; longer names are cut off) | `Battlefield Vietnam Server` |
 | `BFV_PORT` | `game.serverPort` (game port) | `15567` |
 | `BFV_INTERNET` | `game.serverInternet`: `true` announces the server to GameSpy/ASE; `false` is LAN only | `false` |
 | `BFV_MAX_PLAYERS` | `game.serverMaxPlayers` (up to 64) | `32` |
