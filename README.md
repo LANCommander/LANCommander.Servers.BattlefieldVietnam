@@ -1,6 +1,6 @@
 # Battlefield Vietnam Server (Docker)
 
-This repository provides a Dockerized **Battlefield Vietnam** dedicated server. It runs DICE's official 1.21 Linux dedicated server (`bfv_linded`), downloaded on first start from the [LinuxGSM](https://linuxgsm.com/servers/bfvserver/) mirror. That package includes the community security patch and the official WW2 mod, and needs no retail game files.
+This repository provides a Dockerized **Battlefield Vietnam** dedicated server. It runs DICE's official 1.21 Linux dedicated server (`bfv_linded`), downloaded on first start from this repo's [`server-1.21` release](https://github.com/LANCommander/LANCommander.Servers.BattlefieldVietnam/releases/tag/server-1.21), a mirror of [LinuxGSM](https://linuxgsm.com/servers/bfvserver/)'s package. That package includes the community security patch and the official WW2 mod, and needs no retail game files.
 The image builds on [`lancommander/base`](https://github.com/LANCommander/LANCommander.Servers.Base). It supports file overlaying using OverlayFS.
 
 ---
@@ -82,7 +82,7 @@ The settings are written into `mods/<BFV_MOD>/settings/<BFV_CONFIG>` on every st
 | `BFV_MOD` | Mod folder under `mods/` (`+game`) | `bfvietnam` |
 | `BFV_CONFIG` | Server settings file in `mods/<mod>/settings/` (`+config`); created if missing | `serversettings.con` |
 | `BFV_STATUS_MONITOR` | Show the text status monitor in `docker logs`. Needs `tty: true`, or it spins a CPU core | `false` |
-| `BFV_SERVER_URL` | Server package to install | LinuxGSM 1.21 package |
+| `BFV_SERVER_URL` | Server package to install | the `server-1.21` release asset |
 | `BFV_SERVER_SHA256` | Expected SHA256 of `BFV_SERVER_URL` (empty skips the check) | hash of the default package |
 | `START_EXE` | Launcher | `/usr/local/bin/bfv-server` |
 | `START_ARGS` | Appended to the server command line | |

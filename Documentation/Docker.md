@@ -44,7 +44,7 @@ With the status monitor off, `docker logs` ends at the `Starting:` line. The ser
 
 ## Server Package
 
-The default `BFV_SERVER_URL` is LinuxGSM's mirror of the 1.21 Linux server, `bfv_linded-v1.21-20041207_patch-linuxgsm.tar.xz`. It contains:
+The default `BFV_SERVER_URL` is the `server-1.21` release of this repo: LinuxGSM's package of the 1.21 Linux server, `bfv_linded-v1.21-20041207_patch-linuxgsm.tar.xz` (also at `https://linuxgsm.download/BattlefieldVietnam/`). It contains:
 
 - `bfv_linded.dynamic` (with the community security patch described in `README-PATCH.txt`) and `bfv_linded.static`
 - `mods/bfvietnam/` (server-side archives and maps) and `mods/bfv_ww2mod/` (the official WW2 mod)

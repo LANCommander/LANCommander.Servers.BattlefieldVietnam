@@ -7,15 +7,16 @@ FROM ${BASE_IMAGE}
 # ----------------------------
 # Server settings
 #   - BFV_SERVER_URL is the official 1.21 Linux dedicated server (bfv_linded) with the community
-#     security patch and the WW2 mod, as packaged by LinuxGSM. It is installed into
-#     /config/Server on first start and verified against BFV_SERVER_SHA256 (empty = no check)
+#     security patch and the WW2 mod, as packaged by LinuxGSM and mirrored as this repo's
+#     server-1.21 release. It is installed into /config/Server on first start and verified
+#     against BFV_SERVER_SHA256 (empty = no check)
 #   - Server rules live in mods/<BFV_MOD>/settings/<BFV_CONFIG>; the BFV_* settings below are
 #     written into it on every start (empty settings are left alone). BFV_MAPS, when set,
 #     replaces settings/maplist.con
 #   - The text status monitor busy-loops without a terminal, so it is off unless
 #     BFV_STATUS_MONITOR=true (then also set `tty: true`)
 # ----------------------------
-ENV BFV_SERVER_URL="https://linuxgsm.download/BattlefieldVietnam/bfv_linded-v1.21-20041207_patch-linuxgsm.tar.xz" \
+ENV BFV_SERVER_URL="https://github.com/LANCommander/LANCommander.Servers.BattlefieldVietnam/releases/download/server-1.21/bfv_linded-v1.21-20041207_patch-linuxgsm.tar.xz" \
     BFV_SERVER_SHA256="12c5ac805dc6690f615d7187d6e7c67379a201d73e74ad1cd79818efc43414f9" \
     BFV_MOD="bfvietnam" \
     BFV_CONFIG="serversettings.con" \
